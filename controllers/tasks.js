@@ -30,20 +30,14 @@ module.exports.updateTask = async (req, res, next) => {
   try {
     const { title, description, isCompleted } = req.body;
 
-    const task = await Task.findByIdAndUpdate(
-      req.params.taskId,
+    const task = await Task.findOneAndUpdate(
+      { _id: req.params.taskId, owner: req.user._id },
       { title, description, isCompleted },
       { new: true, runValidators: true },
     );
 
     if (!task) {
       return res.status(404).send({ message: "Tarea no encontrada" });
-    }
-
-    if (task.owner.toString() !== req.user._id) {
-      return res
-        .status(403)
-        .send({ message: "No puedes editar tareas de otros usuarios" });
     }
 
     return res.send(task);

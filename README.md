@@ -6,48 +6,65 @@ API REST para la aplicación TaskFlow. Gestiona autenticación con JWT y CRUD de
 ## 🔗 API en vivo
 
 - **URL Base:** [https://taskflow-backend-tpgr.onrender.com](https://taskflow-backend-tpgr.onrender.com)
-- **Frontend:** [https://sparkly-alpaca-e58384.netlify.app/](https://sparkly-alpaca-e58384.netlify.app/)
+- **Frontend (demo):** [https://sparkly-alpaca-e58384.netlify.app/](https://sparkly-alpaca-e58384.netlify.app/)
 
-> **Nota:** El plan Free de Render "duerme" el servidor tras 15 min sin uso. El primer request tarda ~50 segundos en despertar.
+### 🚀 Cómo probar el demo
 
-## 🚀 Tecnologías
+1. Abre la URL: [https://sparkly-alpaca-e58384.netlify.app/](https://sparkly-alpaca-e58384.netlify.app/)
+2. Haz clic en **"Registrarse"** y crea una cuenta con tu email y una contraseña (mínimo 6 caracteres).
+3. Inicia sesión y empieza a crear tus tareas.
 
-- **Node.js** + **Express 5**
-- **MongoDB** + **Mongoose 9** (Atlas en producción)
-- **JWT** (jsonwebtoken)
-- **bcryptjs** (hash de contraseñas)
-- **CORS**, **dotenv**, **nodemon**
+### 🚀 Cómo probar la API
 
-## 📡 Endpoints
+Puedes probar los endpoints con **Postman**, **Thunder Client** o cualquier cliente HTTP.
 
-| Método | Ruta             | Descripción          | Auth |
-| ------ | ---------------- | -------------------- | ---- |
-| POST   | `/api/signup`    | Registrar usuario    | ❌   |
-| POST   | `/api/signin`    | Login (devuelve JWT) | ❌   |
-| GET    | `/api/users/me`  | Perfil del usuario   | ✅   |
-| GET    | `/api/tasks`     | Tareas del usuario   | ✅   |
-| POST   | `/api/tasks`     | Crear tarea          | ✅   |
-| PATCH  | `/api/tasks/:id` | Actualizar tarea     | ✅   |
-| DELETE | `/api/tasks/:id` | Eliminar tarea       | ✅   |
+**Ejemplo de registro:**
 
-## 📁 Estructura del proyecto
+```http
+POST https://taskflow-backend-tpgr.onrender.com/api/signup
+Content-Type: application/json
 
-├── controllers/ (users.js, tasks.js)
-├── middlewares/ (auth.js, errors.js)
-├── models/ (user.js, task.js)
-├── routes/ (auth.js, users.js, tasks.js)
-├── config.js (valida JWT_SECRET al arrancar)
-└── app.js (servidor principal)
+{
+  "email": "tucorreo@ejemplo.com",
+  "password": "123456",
+  "name": "Tu Nombre"
+}
+Nota: El plan Free de Render "duerme" el servidor tras 15 min sin uso. El primer request tarda ~50 segundos en despertar.
 
+🚀 Tecnologías
+Node.js + Express 5
+
+MongoDB + Mongoose 9 (Atlas en producción)
+
+JWT (jsonwebtoken)
+
+bcryptjs (hash de contraseñas)
+
+CORS, dotenv, nodemon
+
+📡 Endpoints
+Método	Ruta	Descripción	Auth
+POST	/api/signup	Registrar usuario	❌
+POST	/api/signin	Login (devuelve JWT)	❌
+GET	/api/users/me	Perfil del usuario	✅
+GET	/api/tasks	Tareas del usuario	✅
+POST	/api/tasks	Crear tarea	✅
+PATCH	/api/tasks/:id	Actualizar tarea	✅
+DELETE	/api/tasks/:id	Eliminar tarea	✅
+📁 Estructura del proyecto
 text
+├── controllers/   (users.js, tasks.js)
+├── middlewares/   (auth.js, errors.js)
+├── models/        (user.js, task.js)
+├── routes/        (auth.js, users.js, tasks.js)
+├── config.js      (valida JWT_SECRET al arrancar)
+└── app.js         (servidor principal)
+🛠️ Instalación local
+Clona el repositorio:
 
-## 🛠️ Instalación local
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/DarkDieval/taskflow-backend.git
-   Instala dependencias:
-   ```
+bash
+git clone https://github.com/DarkDieval/taskflow-backend.git
+Instala dependencias:
 
 bash
 npm install
@@ -75,4 +92,5 @@ Manejo centralizado de errores (no expone stack traces).
 
 👤 Autor
 Diego Valencia (@DarkDieval)
+```
 ````

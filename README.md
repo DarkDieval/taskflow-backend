@@ -1,4 +1,3 @@
-````markdown
 # TaskFlow - Backend
 
 API REST para la aplicación TaskFlow. Gestiona autenticación con JWT y CRUD de tareas con aislamiento entre usuarios.
@@ -7,12 +6,7 @@ API REST para la aplicación TaskFlow. Gestiona autenticación con JWT y CRUD de
 
 - **URL Base:** [https://taskflow-backend-tpgr.onrender.com](https://taskflow-backend-tpgr.onrender.com)
 - **Frontend (demo):** [https://sparkly-alpaca-e58384.netlify.app/](https://sparkly-alpaca-e58384.netlify.app/)
-
-### 🚀 Cómo probar el demo
-
-1. Abre la URL: [https://sparkly-alpaca-e58384.netlify.app/](https://sparkly-alpaca-e58384.netlify.app/)
-2. Haz clic en **"Registrarse"** y crea una cuenta con tu email y una contraseña (mínimo 6 caracteres).
-3. Inicia sesión y empieza a crear tus tareas.
+- **Repositorio Frontend:** [https://github.com/DarkDieval/taskflow-frontend](https://github.com/DarkDieval/taskflow-frontend)
 
 ### 🚀 Cómo probar la API
 
@@ -29,6 +23,18 @@ Content-Type: application/json
   "password": "123456",
   "name": "Tu Nombre"
 }
+Ejemplo de login:
+
+http
+POST https://taskflow-backend-tpgr.onrender.com/api/signin
+Content-Type: application/json
+
+{
+  "email": "tucorreo@ejemplo.com",
+  "password": "123456"
+}
+La respuesta incluirá un JWT que debes enviar en el header Authorization: Bearer <token> para las rutas protegidas.
+
 Nota: El plan Free de Render "duerme" el servidor tras 15 min sin uso. El primer request tarda ~50 segundos en despertar.
 
 🚀 Tecnologías
@@ -90,7 +96,9 @@ Manejo centralizado de errores (no expone stack traces).
 
 .env excluido de Git.
 
+🔗 Repositorio relacionado
+Frontend (React): https://github.com/DarkDieval/taskflow-frontend
+
 👤 Autor
 Diego Valencia (@DarkDieval)
 ```
-````

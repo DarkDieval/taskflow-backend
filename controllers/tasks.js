@@ -75,3 +75,28 @@ module.exports.deleteTask = async (req, res, next) => {
     return next(err);
   }
 };
+
+module.exports.deleteManyTasks = async (req, res, next) => {
+  try {
+    const { taskIds } = req.body;
+
+    if (!Array.isArray(taskIds) || taskIds.length === 0) {
+      return res.status(400).send({ message: "Debes enviar un array de IDs" });
+    }
+
+    const result = await Task.deleteMany({
+      _id: { $in: taskIds },
+      owner: req.user._id,
+    });
+
+    return res.send({
+      message: `${result.deletedCount} tarea(s) eliminada(s)`,
+      deletedCount: result.deletedCount,
+    });
+  } catch (err) {
+    if (err.name === "CastError") {
+      return res.status(400).send({ message: "ID de tarea inválido" });
+    }
+    return next(err);
+  }
+};

@@ -11,10 +11,11 @@ module.exports.getTasks = async (req, res, next) => {
 
 module.exports.createTask = async (req, res, next) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, dueDate } = req.body;
     const task = await Task.create({
       title,
       description,
+      dueDate: dueDate || null,
       owner: req.user._id,
     });
     return res.status(201).send(task);
@@ -28,11 +29,11 @@ module.exports.createTask = async (req, res, next) => {
 
 module.exports.updateTask = async (req, res, next) => {
   try {
-    const { title, description, isCompleted } = req.body;
+    const { title, description, isCompleted, dueDate } = req.body;
 
     const task = await Task.findOneAndUpdate(
       { _id: req.params.taskId, owner: req.user._id },
-      { title, description, isCompleted },
+      { title, description, isCompleted, dueDate },
       { new: true, runValidators: true },
     );
 

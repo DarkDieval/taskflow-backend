@@ -1,8 +1,8 @@
 {
   "name": "taskflow-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API REST de TaskFlow con autenticación JWT",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js"
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/DarkDieval/taskflow-backend.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Diego Valencia",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DarkDieval/taskflow-backend/issues"
@@ -23,10 +23,8 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "express-winston": "^4.2.0",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.9.5",
-    "winston": "^3.19.0"
+    "mongoose": "^9.9.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
